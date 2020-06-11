@@ -1,0 +1,31 @@
+= Demo OpenFaaS/Okteto Typescript Coding Workflow
+
+Production image compiles Typescript, while development image executes Typescript with https://github.com/TypeStrong/ts-node[ts-node]. +
+Uses the development image when developing on Okteto. +
+
+.Production Typescript Template
+ faas template pull https://github.com/Janaka-Steph/openfaas-template-typescript
+
+.Development Typescript Template
+ faas template pull https://github.com/Janaka-Steph/openfaas-template-typescriptdev
+
+
+== Deploying Production code
+
+ faas up
+
+ faas invoke fn-typescript
+
+
+== Developing with Okteto
+
+.Make sure the production image is deployed
+ faas up
+
+.Build and push development image to Okteto registry
+ DEV=dev faas build
+ DEV=dev faas push
+
+.Sync local source code with remote using development image
+ cd function
+ okteto up

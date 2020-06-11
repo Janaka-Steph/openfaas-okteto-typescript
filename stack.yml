@@ -1,0 +1,11 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://openfaas-ingress-janaka-steph.cloud.okteto.net
+
+functions:
+  fn-typescript:
+    lang: typescript${DEV}
+    handler: ./function
+    #image: janakasteph/fn-typescript:${DEV:-latest}
+    image: registry.cloud.okteto.net/janaka-steph/fn-typescript:${DEV:-latest}

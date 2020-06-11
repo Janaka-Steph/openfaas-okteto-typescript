@@ -1,0 +1,10 @@
+name: fn-typescript
+image: registry.cloud.okteto.net/janaka-steph/fn-typescript:dev
+labels:
+  faas_function: fn-typescript
+workdir: /home/app
+mountpath: /home/app/function
+persistentVolume:
+  enabled: true
+environment:
+  - fprocess=ts-node --files --project function/tsconfig.json index.ts
